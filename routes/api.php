@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ResendOtpController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +30,7 @@ Route::post('password/reset', [ResetPasswordController::class,'passwordReset']);
 
 // Route::middleware([auth:sanctum])->group(function () {
     Route::post('email-verification', [EmailVerificationController::class,'email_verification']);
+    Route::post('resend', [ResendOtpController::class,'resendOtp']);
 Route::get('email-verification', [EmailVerificationController::class,'sendEmailVerification']);
 
 // });

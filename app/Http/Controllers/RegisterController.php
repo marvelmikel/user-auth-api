@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-
+use App\Notifications\RegisterNotification;
 use Illuminate\Support\Facades\Response;
+use App\Notifications\EmailVerificationNotification;
 class RegisterController extends Controller
 {
     //
@@ -57,6 +58,8 @@ class RegisterController extends Controller
         $success['role'] =  $user->role;
         $success['status'] =  $user->status;
         $success['success'] =  true;
+        $user->notify(new RegisterNotification());
+        $user->notify(new EmailVerificationNotification());
 
 
 
